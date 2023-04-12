@@ -1,0 +1,89 @@
+{% extends 'adminpartials/base.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="section dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-title p-4">
+            <h2>Profile</h2>
+          </div>
+          {% for p in profile_data %}
+          <div class="card-body">
+            <img src="{% static 'default/doctor.png' %}" class="rounded mx-auto d-block" style="max-width: 75%;">
+            <div class="text-center mt-4">
+              <h4>{{p.firstName}} {{p.lastName}}</h4>
+              <h4>{{p.sex}}, {{p.profileAge}}</h4>
+            </div>           
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-title p-4">
+            <h2>Personal Information</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <label for="inputNanme4" class="form-label"><strong>First Name</strong></label>
+                <input type="text" class="form-control" id="inputNanme4" placeholder={{p.firstName}} readonly>
+              </div>
+              <div class="col-6">
+                <label for="inputNanme4" class="form-label"><strong>Last Name</strong></label>
+                <input type="text" class="form-control" id="inputNanme4" placeholder={{p.lastName}} readonly>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-6">
+                <label for="inputNanme4" class="form-label"><strong>Age</strong></label>
+                <input type="text" class="form-control" id="inputNanme4" placeholder={{p.profileAge}} readonly>
+              </div>
+              <div class="col-6">
+                <label for="inputNanme4" class="form-label"><strong>Sex</strong></label>
+                <input type="text" class="form-control" id="inputNanme4" placeholder={{p.sex}} readonly>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="inputAddress" class="form-label"><strong>Address</strong></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder={{p.address}}
+                readonly>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="inputAddress" class="form-label"><strong>Phone Number</strong></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder={{p.phoneNum}}
+                readonly>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12">
+                <label for="inputAddress" class="form-label"><strong>Short Description</strong></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder={{p.shortDesc}}
+                readonly>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
